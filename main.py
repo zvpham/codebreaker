@@ -1,16 +1,11 @@
-def load_words():
-  all_words = []
-  
-  with open('safedict_simple.txt', 'r') as f:
-    for line in f:
-      all_words.append(line.rstrip())
-  end_time = time.time()
+file1 = open('test.txt', 'r')
+print(file1.read())
+file1.close()
 
-  elapsed_time = end_time - start_time
-  # log words loaded and elapsed time
-  print('Loaded ' + str(len(all_words)) + ' words in ' + f'{elapsed_time:.2f}' + ' seconds.')
+file1 =  open('test.txt', 'a')
+file1.write("\n Tomorrow")
+file1.close()
 
-  return all_words
-
-with open('text.txt', 'w') as f:
-  
+file1 = open('test.txt', 'r')
+print(file1.read())
+file1.close()
