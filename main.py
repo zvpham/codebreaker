@@ -49,17 +49,36 @@ def encode_vignere_cipher(message, key):
       else:
           index = alphabet.index(letter) + alphabet.index(key[count])
       encoded_message += alphabet[index]
-      print(f"{key[count]} + {alphabet[index]} + {letter}")
+      #print(f"{key[count]} + {alphabet[index]} + {letter}")
       if count >= len(key) - 1:
         count = 0
       else:
         count += 1
     else:
       encoded_message += letter
-      
-    
   return encoded_message
-       
+
+def decode_vignere_cipher(message, key):
+  count = 0
+  decoded_message = ""
+  index = -1
+  
+  for letter in message:
+    if letter in alphabet:
+      if alphabet.index(letter) - alphabet.index(key[count]) < 0:
+          index = alphabet.index(letter) - alphabet.index(key[count]) + 26
+      else:
+          index = alphabet.index(letter) - alphabet.index(key[count])
+      decoded_message += alphabet[index]
+      #print(f"{key[count]} + {alphabet[index]} + {letter}")
+      if count >= len(key) - 1:
+        count = 0
+      else:
+        count += 1
+    else:
+      decoded_message += letter
+  return decoded_message
+
 shift = int(input("how much do you want to shift "))
 
 file1 = open('message.txt', 'r')
@@ -74,4 +93,6 @@ print("")
 decode_ceasar_cipher(cipher_text, shift)
 """
 print("test")
-print(encode_vignere_cipher(message, "key"))
+cipher_text = encode_vignere_cipher(message, "key")
+print(cipher_text)
+print(decode_vignere_cipher(cipher_text, "key"))
