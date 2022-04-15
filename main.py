@@ -35,7 +35,7 @@ def decode_ceasar_cipher(message, shift):
       decoded_message += alphabet[shifted_alphabet.index(letter)]
     else:
       decoded_message += letter
-  print(decoded_message)
+  return decoded_message
 
 def encode_vignere_cipher(message, key):
   count = 0
@@ -79,20 +79,25 @@ def decode_vignere_cipher(message, key):
       decoded_message += letter
   return decoded_message
 
-shift = int(input("how much do you want to shift "))
-
-file1 = open('message.txt', 'r')
-message = file1.read().lower()
-
+message = input("type a message you want encoded: ")
 message.lower()
-"""
-cipher_text = encode_ceasar_cipher(message, shift)
+shift = int(input("how much do you want to shift: "))
+key =  input("what is the key: ")
 print("")
-print(cipher_text)
-print("")
-decode_ceasar_cipher(cipher_text, shift)
-"""
-print("test")
-cipher_text = encode_vignere_cipher(message, "key")
-print(cipher_text)
-print(decode_vignere_cipher(cipher_text, "key"))
+
+ceasar_cipher_text = encode_ceasar_cipher(message, shift)
+ceasar_decoded_message = decode_ceasar_cipher(ceasar_cipher_text, shift)
+
+vignere_cipher_text = encode_vignere_cipher(message, key)
+vignere_decoded_message = decode_vignere_cipher(vignere_cipher_text, key)
+
+file1 = open('message.txt', 'w')
+file1.write(f"original message: {message}\n")
+file1.write(f"Ceasar cipher with a shift of {shift}: {ceasar_cipher_text} \nDecoded cipher: {ceasar_decoded_message}\n")
+file1.write(f"\noriginal message: {message}\n")
+file1.write(f"Vignere cipher with a key of {key}: {vignere_cipher_text} \nDecoded cipher: {vignere_decoded_message}\n")
+file1.close
+
+file1 =  open('message.txt', 'r')
+print(file1.read())
+file1.close()

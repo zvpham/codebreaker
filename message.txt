@@ -1,1 +1,7 @@
-If he had anything confidential to say, he wrote it in cipher, that is, by so changing the order of the letters of the alphabet, that not a word could be made out.
+original message :how are you doing today
+Ceasar cipher with a shift of 3: krz duh brx grlqj wrgdb 
+Decoded cipher: how are you doing today
+
+original message :how are you doing today
+Vignere cipher with a key of key: rsu kvc iss nsgxk ryhyi 
+Decoded cipher: how are you doing today
