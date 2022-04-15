@@ -43,15 +43,21 @@ def encode_vignere_cipher(message, key):
   index = -1
   
   for letter in message:
-    if alphabet.index(letter) + alphabet.index(key[count]) > 25:
-        index = alphabet.index(letter) + alphabet.index(key[count]) - 25
+    if letter in alphabet:
+      if alphabet.index(letter) + alphabet.index(key[count]) > 25:
+          index = alphabet.index(letter) + alphabet.index(key[count]) - 26
+      else:
+          index = alphabet.index(letter) + alphabet.index(key[count])
+      encoded_message += alphabet[index]
+      print(f"{key[count]} + {alphabet[index]} + {letter}")
+      if count >= len(key) - 1:
+        count = 0
+      else:
+        count += 1
     else:
-        index = alphabet.index(letter) + alphabet.index(key[count])
-    encoded_message += alphabet[index]
-    if count >= len(key):
-      count = 0
-    else:
-      count += 1
+      encoded_message += letter
+      
+    
   return encoded_message
        
 shift = int(input("how much do you want to shift "))
