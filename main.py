@@ -1,5 +1,5 @@
-alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", ]
-
+alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" ]
+is_capital = []
 # prerequisite - shift is an integer
 # shifts the alphabet by shift
 def encode_ceasar_cipher(message, shift):
@@ -79,22 +79,41 @@ def decode_vignere_cipher(message, key):
       decoded_message += letter
   return decoded_message
 
+def capital_letter(text):
+  count = 0
+  capitalized_text = ""
+  for letter in text:
+    if is_capital[count] == 1:
+      capitalized_text += letter.upper()
+    else:
+      capitalized_text += letter
+    count += 1
+  return capitalized_text
+
 message = input("type a message you want encoded: ")
-message.lower()
+for letter in message:
+  if letter == letter.upper():
+    is_capital.append(1)
+  else:
+    is_capital.append(0)
+
+
 shift = int(input("how much do you want to shift: "))
 key =  input("what is the key: ")
 print("")
 
-ceasar_cipher_text = encode_ceasar_cipher(message, shift)
-ceasar_decoded_message = decode_ceasar_cipher(ceasar_cipher_text, shift)
+message = message.lower()
+ceasar_cipher_text = capital_letter(encode_ceasar_cipher(message, shift))
+ceasar_decoded_message = capital_letter(decode_ceasar_cipher(ceasar_cipher_text, shift))
 
-vignere_cipher_text = encode_vignere_cipher(message, key)
-vignere_decoded_message = decode_vignere_cipher(vignere_cipher_text, key)
+vignere_cipher_text = capital_letter(encode_vignere_cipher(message, key))
+vignere_decoded_message = capital_letter(decode_vignere_cipher(vignere_cipher_text, key))
+
 
 file1 = open('message.txt', 'w')
-file1.write(f"original message: {message}\n")
+file1.write(f"original message: {capital_letter(message)}\n")
 file1.write(f"Ceasar cipher with a shift of {shift}: {ceasar_cipher_text} \nDecoded cipher: {ceasar_decoded_message}\n")
-file1.write(f"\noriginal message: {message}\n")
+file1.write(f"\noriginal message: {capital_letter(message)}\n")
 file1.write(f"Vignere cipher with a key of {key}: {vignere_cipher_text} \nDecoded cipher: {vignere_decoded_message}\n")
 file1.close
 

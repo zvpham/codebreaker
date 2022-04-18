@@ -1,7 +1,7 @@
-original message :how are you doing today
-Ceasar cipher with a shift of 3: krz duh brx grlqj wrgdb 
-Decoded cipher: how are you doing today
+original message: HOW ARE YOU DOING
+Ceasar cipher with a shift of 3: KRZ DUH BRX GRLQJ 
+Decoded cipher: KRZ DUH BRX GRLQJ
 
-original message :how are you doing today
-Vignere cipher with a key of key: rsu kvc iss nsgxk ryhyi 
-Decoded cipher: how are you doing today
+original message: how are you doing
+Vignere cipher with a key of key: RSU KVC ISS NSGXK 
+Decoded cipher: RSU KVC ISS NSGXK
